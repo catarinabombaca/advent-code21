@@ -1,8 +1,10 @@
 package day1
 
+//Todo: refactor
+
 import (
 	"fmt"
-	"io/ioutil"
+	"github.com/catarinabombaca/advent-code21/utils"
 	"strconv"
 	"strings"
 )
@@ -40,10 +42,7 @@ func SonarSlidingWindow(measurements []int) int {
 
 func GetMeasurements() []int {
 
-	b, err := ioutil.ReadFile("data.txt")
-	if err != nil {
-		fmt.Errorf("error reading file: %v", err)
-	}
+	b := utils.GetFileContent("data.txt")
 
 	lines := strings.Split(string(b), "\n")
 	data := make([]int, 0, len(lines))

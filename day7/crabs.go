@@ -22,6 +22,21 @@ func AlignPosition(crabsPosition []int) int {
 	return findMin(fuelSpent)
 }
 
+func AlignPositionExponential(crabsPosition []int) int {
+	var fuelSpent []int
+
+	for _, pos := range crabsPosition {
+		var totalFuel float64
+		for _, nextPos := range crabsPosition {
+			delta := math.Abs(float64(pos - nextPos))
+			totalFuel += delta*(delta+1)/2
+		}
+		fuelSpent = append(fuelSpent, int(totalFuel))
+	}
+
+	return findMin(fuelSpent)
+}
+
 func findMin(values []int) int {
 	var minValue int
 	for i, value := range values {

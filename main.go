@@ -23,6 +23,7 @@ func main() {
 
 	crabsPos := day7.GetCrabsPosition()
 	minFuel1 := day7.AlignPosition(crabsPos)
+	minFuel2 := day7.AlignPositionExponential(crabsPos)
 
-	fmt.Printf("Day 7: %v/...\n", minFuel1)
+	fmt.Printf("Day 7: %v/%v\n", minFuel1, minFuel2)
 }

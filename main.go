@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/catarinabombaca/advent-code21/day1"
 	"github.com/catarinabombaca/advent-code21/day2"
+	"github.com/catarinabombaca/advent-code21/day7"
 )
 
 func main() {
@@ -18,6 +19,10 @@ func main() {
 	instructions := day2.GetInstructions()
 	product1 := day2.Pilot(instructions)
 
-	fmt.Printf("Day 2: %v/...", product1)
+	fmt.Printf("Day 2: %v/...\n", product1)
 
+	crabsPos := day7.GetCrabsPosition()
+	minFuel1 := day7.AlignPosition(crabsPos)
+
+	fmt.Printf("Day 7: %v/...\n", minFuel1)
 }

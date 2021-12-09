@@ -17,9 +17,10 @@ func main() {
 
 	//Day 2 results
 	instructions := day2.GetInstructions()
-	product1 := day2.Pilot(instructions)
+	product1 := day2.Pilot(instructions, false)
+	product2 := day2.Pilot(instructions, true)
 
-	fmt.Printf("Day 2: %v/...\n", product1)
+	fmt.Printf("Day 2: %v/%v\n", product1, product2)
 
 	crabsPos := day7.GetCrabsPosition()
 	minFuel1 := day7.AlignPosition(crabsPos)

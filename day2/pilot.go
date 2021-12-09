@@ -17,6 +17,7 @@ type Step struct {
 type Submarine struct {
 	Position int
 	Depth int
+	Aim int
 }
 
 func (s *Submarine) Move(step Step) {
@@ -32,12 +33,31 @@ func (s *Submarine) Move(step Step) {
 	}
 }
 
-func Pilot(instructions []string) int {
+func (s *Submarine) MoveWithAim(step Step) {
+	switch step.direction {
+	case "forward":
+		s.Position += step.value
+		s.Depth += s.Aim*step.value
+	case "down":
+		s.Aim += step.value
+	case "up":
+		s.Aim -= step.value
+
+	default:
+		fmt.Println("unknown direction")
+	}
+}
+
+func Pilot(instructions []string, hasAim bool) int {
 	steps := getSteps(instructions)
-	submarine := Submarine{0, 0}
+	submarine := Submarine{0, 0, 0}
 
 	for _, step := range steps {
-		submarine.Move(step)
+		if hasAim {
+			submarine.MoveWithAim(step)
+		} else {
+			submarine.Move(step)
+		}
 	}
 
 	return submarine.Position * submarine.Depth

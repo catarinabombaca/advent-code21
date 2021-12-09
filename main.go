@@ -9,7 +9,7 @@ import (
 
 func main() {
 	//Day 1 results
-	measurements := day1.GetMeasurements()
+	measurements := day1.GetInts("data.txt")
 	count1 := day1.Sonar(measurements)
 	count2 := day1.SonarSlidingWindow(measurements)
 
@@ -21,6 +21,9 @@ func main() {
 	product2 := day2.Pilot(instructions, true)
 
 	fmt.Printf("Day 2: %v/%v\n", product1, product2)
+
+	//Day 3 results
+	//measurements := day1.GetInts("data.txt")
 
 	crabsPos := day7.GetCrabsPosition()
 	minFuel1 := day7.AlignPosition(crabsPos)

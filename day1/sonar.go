@@ -40,9 +40,9 @@ func SonarSlidingWindow(measurements []int) int {
 }
 
 
-func GetMeasurements() []int {
+func GetInts(fileName string) []int {
 
-	b := utils.GetFileContent("data.txt")
+	b := utils.GetFileContent(fileName)
 
 	lines := strings.Split(string(b), "\n")
 	data := make([]int, 0, len(lines))

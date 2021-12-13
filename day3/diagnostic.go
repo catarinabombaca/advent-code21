@@ -1,11 +1,64 @@
 package day3
 
-import "math"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
-func Diagnostic(report []int) int {
-	return 0
+func Diagnostic(report []string) int {
+	var gammaNumbers []string
+	var epsilonNumbers []string
+	for i := 0; i < len(report[0]); i++ {
+		var numbers []string
+		for _, binary := range report {
+			numbers = append(numbers, string(binary[i]))
+		}
+		mostCommon := GetMostCommonNumber(numbers)
+		leastCommon := GetLeastCommonNumber(numbers)
+		gammaNumbers = append(gammaNumbers, mostCommon)
+		epsilonNumbers = append(epsilonNumbers, leastCommon)
+	}
+
+	gammaDecimal, _ := convertBinaryToDecimal(strings.Join(gammaNumbers, ""))
+	epsilonDecimal, _ := convertBinaryToDecimal(strings.Join(epsilonNumbers, ""))
+	return gammaDecimal * epsilonDecimal
 }
 
-func GetDigit(number int, pos int) int {
-	r := number % int(math.Pow(10, float64(pos)))
-	return r / int(math.Pow(10, float64(pos-1)))}
+func GetMostCommonNumber(numbers []string) string {
+		countMap := make(map[string]int)
+		for _, value := range numbers {
+			countMap[value] += 1
+		}
+
+		if countMap["0"] > countMap["1"] {
+			return "0"
+		} else {
+			return "1"
+		}
+}
+
+func GetLeastCommonNumber(numbers []string) string {
+	countMap := make(map[string]int)
+	for _, value := range numbers {
+		countMap[value] += 1
+	}
+
+	if countMap["0"] > countMap["1"] {
+		return "1"
+	} else {
+		return "0"
+	}
+}
+
+func convertBinaryToDecimal(binary string) (int, error) {
+	output, err := strconv.ParseInt(binary, 2, 64)
+	if err != nil {
+		fmt.Println(err)
+		return 0, err
+	}
+	return int(output), nil
+}
+
+
+

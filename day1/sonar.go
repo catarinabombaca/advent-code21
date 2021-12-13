@@ -3,9 +3,7 @@ package day1
 //Todo: refactor
 
 import (
-	"fmt"
 	"github.com/catarinabombaca/advent-code21/utils"
-	"strconv"
 	"strings"
 )
 
@@ -52,10 +50,7 @@ func GetInts(fileName string) []int {
 		if len(l) == 0 { continue }
 		// Atoi better suits the job when we know exactly what we're dealing
 		// with. Scanf is the more general option.
-		measurement, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Errorf("error converting to measumerement to int: %v", err)
-		}
+		measurement := utils.GetDigit(l)
 
 		data = append(data, measurement)
 	}

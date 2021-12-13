@@ -1,10 +1,8 @@
 package day7
 
 import (
-	"fmt"
 	"github.com/catarinabombaca/advent-code21/utils"
 	"math"
-	"strconv"
 	"strings"
 )
 
@@ -55,10 +53,7 @@ func GetCrabsPosition() []int {
 	for _, value := range values {
 		// Atoi better suits the job when we know exactly what we're dealing
 		// with. Scanf is the more general option.
-		position, err := strconv.Atoi(value)
-		if err != nil {
-			fmt.Errorf("error converting to measumerement to int: %v", err)
-		}
+		position := utils.GetDigit(value)
 
 		data = append(data, position)
 	}

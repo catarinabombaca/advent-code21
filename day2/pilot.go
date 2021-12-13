@@ -5,7 +5,6 @@ package day2
 import (
 	"fmt"
 	"github.com/catarinabombaca/advent-code21/utils"
-	"strconv"
 	"strings"
 )
 
@@ -68,20 +67,16 @@ func getSteps(instructions []string) []Step {
 
 	for _, instruction := range instructions {
 		step := strings.Split(instruction, " ")
-		value, err := strconv.Atoi(step[1])
-		if err != nil {
-			fmt.Errorf("error converting to step value to int: %v", err)
-		}
-
+		value := utils.GetDigit(step[1])
 		steps = append(steps, Step{step[0], value})
 	}
 
 	return steps
 }
 
-func GetInstructions() []string {
-	b := utils.GetFileContent("data_day2.txt")
-	instructions := strings.Split(string(b), "\n")
+func GetValuesAsString(filename string) []string {
+	b := utils.GetFileContent(filename)
+	values := strings.Split(string(b), "\n")
 
-	return instructions
+	return values
 }
